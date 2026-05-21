@@ -29,7 +29,7 @@
 
 ### Шаги
 
-1. Клонировать репозиторий: `git clone <url>`
+1. Клонировать репозиторий: `git clone https://github.com/katshuuu/flatcat.git`
 2. Скопировать файл переменных окружения: `cp .env.example .env`
 3. Заполнить `.env` (Supabase URL, ключи, JWT-секрет)
 4. Применить миграцию в Supabase: `supabase/migrations/20260520181549_001_initial_schema.sql`
@@ -63,6 +63,7 @@
 | POST | `/api/orders` | Заказ кастомного домика | Авторизованный |
 | PATCH | `/api/orders/:id/status` | Статус заказа | Admin, Manager |
 | POST | `/api/tasks` | Асинхронная задача | Авторизованный |
+| POST | `/tasks` | Асинхронная задача (алиас по ТЗ) | Авторизованный |
 
 ### GraphQL API
 
@@ -70,7 +71,7 @@ Endpoint: `/graphql` — Query: `books`, `book`, `authors`; Mutation: `createBoo
 
 ## RabbitMQ
 
-- Producer: `POST /api/tasks`
+- Producer: `POST /tasks` или `POST /api/tasks` (тело: `{ "type": "email", "payload": {...} }`)
 - Consumer: 2 воркера в docker-compose
 - Retry: 3 попытки, экспоненциальная задержка
 - DLQ: `tasks_dlq`
@@ -85,4 +86,13 @@ cd frontend && npm test && npm run test:coverage
 ## Анализ бандла
 
 После `npm run build` в `frontend/` создаётся `bundle-report.html`.
-# flatcat
+
+## Скриншоты для отчёта
+
+Инструкция и список файлов: [docs/screenshots/README.md](docs/screenshots/README.md).
+
+Положите PNG/JPG в папку `docs/screenshots/` (бандл, GraphQL Sandbox, при необходимости RabbitMQ).
+
+## Репозиторий
+
+https://github.com/katshuuu/flatcat

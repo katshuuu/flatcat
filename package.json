@@ -1,0 +1,11 @@
+{
+  "name": "flatcat-store",
+  "version": "1.0.0",
+  "private": true,
+  "description": "FlatCat — лежанки-домики для кошек",
+  "scripts": {
+    "test": "npm test --prefix backend && npm test --prefix frontend",
+    "test:coverage": "npm run test:coverage --prefix backend && npm run test:coverage --prefix frontend",
+    "build": "npm run build --prefix frontend"
+  }
+}

@@ -1,0 +1,8 @@
+node_modules/
+coverage/
+dist/
+.env
+*.log
+.DS_Store
+frontend/bundle-report.html
+frontend/stats.html
